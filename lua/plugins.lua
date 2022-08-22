@@ -58,13 +58,6 @@ packer.startup(function(use)
 
   use({ "numToStr/Navigator.nvim", config = get_config("navigator") })
 
-  use({
-    "nvim-lualine/lualine.nvim",
-    config = get_config("lualine"),
-    event = "VimEnter",
-    requires = { "kyazdani42/nvim-web-devicons", opt = true },
-  })
-
   use({ "windwp/nvim-autopairs", config = get_config("nvim-autopairs") })
 
   use({
@@ -165,6 +158,7 @@ packer.startup(function(use)
     config = get_config("toggleterm"),
   })
 
+  -- TODO: switch to https://github.com/folke/todo-comments.nvim ?
   use({
     "folke/todo-comments.nvim",
     requires = "nvim-lua/plenary.nvim",
@@ -284,6 +278,12 @@ packer.startup(function(use)
       require("focus").setup()
     end,
   })
+  use({
+    "williamboman/mason.nvim",
+    requires = { "williamboman/mason-lspconfig.nvim", "WhoIsSethDaniel/mason-tool-installer.nvim" },
+    config = get_config("mason"),
+  })
+
 end)
 
 
