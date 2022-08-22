@@ -193,6 +193,8 @@ packer.startup(function(use)
     use({ "EdenEast/nightfox.nvim", config = get_config("nightfox") })
   elseif settings.theme == "catppuccino" then
     use({ "catppuccin/nvim", as = "catppuccin", config = get_config("catppuccin") })
+  elseif settings.theme == "solarized" then
+    use({ "ishan9299/nvim-solarized-lua", as = "solarized", config = get_config("solarized") })
   else
     use({ "catppuccin/nvim", as = "catppuccin", config = get_config("catppuccin") })
   end
@@ -261,6 +263,8 @@ packer.startup(function(use)
 
   use({ "vimpostor/vim-tpipeline" })
 
+  use({ "glench/vim-jinja2-syntax"})
+
   use({
     "anuvyklack/hydra.nvim",
     requires = "anuvyklack/keymap-layer.nvim", -- needed only for pink hydras
@@ -281,6 +285,7 @@ packer.startup(function(use)
     end,
   })
 end)
+
 
 -- TODO: ????
 -- use {"lukas-reineke/headlines.nvim", config = get_config("headlines")}

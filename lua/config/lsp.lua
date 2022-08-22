@@ -34,9 +34,13 @@ local servers = {
   "pyright",
   "sumneko_lua",
   "terraformls",
-  "texlab",
-  "tsserver",
   "yamlls",
+  "puppet",
+  "awk_ls",
+  "ansiblels",
+  "cmake",
+  "solargraph",
+  "tflint",
 }
 -- Use a loop to conveniently call 'setup' on multiple servers
 for _, lsp in ipairs(servers) do
