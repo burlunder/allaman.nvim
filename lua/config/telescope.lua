@@ -15,11 +15,13 @@ telescope.setup({
       require("telescope.themes").get_dropdown({}),
     },
     file_browser = {
+      hijack_netrw = true,
+      respect_gitignore = false,
       mappings = {
         i = {
           ["<c-n>"] = fb_actions.create,
           ["<c-r>"] = fb_actions.rename,
-          -- ["<c-h>"] = actions.which_key,
+          ["<c-h>"] = actions.which_key,
           ["<c-h>"] = fb_actions.toggle_hidden,
           ["<c-x>"] = fb_actions.remove,
           ["<c-p>"] = fb_actions.move,
