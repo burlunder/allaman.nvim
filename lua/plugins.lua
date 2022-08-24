@@ -257,8 +257,6 @@ packer.startup(function(use)
 
   use({ "vimpostor/vim-tpipeline" })
 
-  use({ "glench/vim-jinja2-syntax" })
-
   use({
     "anuvyklack/hydra.nvim",
     requires = "anuvyklack/keymap-layer.nvim", -- needed only for pink hydras
@@ -278,17 +276,33 @@ packer.startup(function(use)
       require("focus").setup()
     end,
   })
+
   use({
     "williamboman/mason.nvim",
     requires = { "williamboman/mason-lspconfig.nvim", "WhoIsSethDaniel/mason-tool-installer.nvim" },
     config = get_config("mason"),
   })
 
+  use({
+    "mfussenegger/nvim-dap",
+    requires = {
+      "mfussenegger/nvim-dap-python",
+      "leoluz/nvim-dap-go",
+      "rcarriga/nvim-dap-ui",
+      "theHamsta/nvim-dap-virtual-text",
+    },
+    config = function()
+      require("config.dap").setup()
+    end,
+  })
+
+  --- MY ---
   --- Dash integration
   use({
     "mrjones2014/dash.nvim",
     run = "make install",
   })
+  use({ "glench/vim-jinja2-syntax" })
 end)
 
 -- TODO: ????
