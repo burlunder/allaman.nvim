@@ -257,7 +257,7 @@ packer.startup(function(use)
 
   use({ "vimpostor/vim-tpipeline" })
 
-  use({ "glench/vim-jinja2-syntax"})
+  use({ "glench/vim-jinja2-syntax" })
 
   use({
     "anuvyklack/hydra.nvim",
@@ -284,8 +284,12 @@ packer.startup(function(use)
     config = get_config("mason"),
   })
 
+  --- Dash integration
+  use({
+    "mrjones2014/dash.nvim",
+    run = "make install",
+  })
 end)
-
 
 -- TODO: ????
 -- use {"lukas-reineke/headlines.nvim", config = get_config("headlines")}
