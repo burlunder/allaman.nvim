@@ -51,6 +51,14 @@ docker run --name nvim --rm -it -v ${HOME}/tmp:/home/nvim/mount nvim
 docker run --name nvim --rm -it --entrypoint=/bin/bash nvim
 ```
 
+## Installation
+
+I created an installation [script](install.sh) that sets up all required tools on a fresh machine to work with my Neovim config.
+
+For now it works on Debian/Ubuntu and Arch. MacOS will be added soon.
+
+USE AT YOUR OWN RISK!!
+
 ## Features
 
 ### General ⚙️
@@ -114,8 +122,7 @@ Each plugin to be installed is defined in `plugins.lua` and each plugin has its 
 | Mode | key                    | binding                                                |
 | ---- | ---------------------- | ------------------------------------------------------ |
 | n    | space                  | Leader key                                             |
-| n    | ⬆ ⬇ ⬅ ➡                | Resize panes                                           |
-| n    | \<c-h \| j \| k \| l\> | Change pane focus (including Tmux panes)               |
+| n    | \<c-h \| j \| k \| l\> | Change window focus (including Tmux panes)             |
 | n    | \<leader\>Tab          | Switch to previously opened buffer                     |
 | n    | \<Tab\>                | Switch to next buffer (bnext)                          |
 | n    | \<S-Tab\>              | Switch to previous buffer (bprev)                      |
@@ -124,6 +131,7 @@ Each plugin to be installed is defined in `plugins.lua` and each plugin has its 
 | n    | sd                     | Delete surrounding                                     |
 | n    | sr                     | Replace surrounding                                    |
 | v    | ga                     | Easyalign                                              |
+| n    | \<c-Tab\>              | Start auto completion (without typing anything)        |
 | n    | gcc                    | Toggle line comment                                    |
 | n/v  | gc                     | Toggle line comment (works with movements like `gcip`) |
 | n    | ss                     | Search 2 char forward (lightspeed)                     |

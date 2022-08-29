@@ -36,14 +36,13 @@ end
 
 -- toggle colorcolumn
 M.toggle_colorcolumn = function()
-  local value = vim.inspect(vim.opt.colorcolumn:get())
-  print(value)
-  if value == "{}" then
+  local value = vim.api.nvim_get_option_value("colorcolumn", {})
+  if value == "" then
     M.notify("Enable colocolumn", "info", "functions.lua")
-    vim.opt.colorcolumn = "79"
+    vim.api.nvim_set_option_value("colorcolumn", "79", {})
   else
     M.notify("Disable colocolumn", "info", "functions.lua")
-    vim.opt.colorcolumn = {}
+    vim.api.nvim_set_option_value("colorcolumn", "", {})
   end
 end
 
@@ -155,7 +154,6 @@ function M.custom_lsp_attach(client, bufnr)
       d = { "<cmd>lua vim.lsp.buf.definition()<cr>", "Go To Definition" },
       e = { "<cmd>Telescope diagnostics bufnr=0<cr>", "Document Diagnostics" },
       -- f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
-      f = { "<cmd>lua require('functions').toggle_autoformat()<cr>", "Toggle format on save" },
       i = { "<cmd>LspInfo<cr>", "Connected Language Servers" },
       k = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover Commands" },
       l = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Line Diagnostics" },
