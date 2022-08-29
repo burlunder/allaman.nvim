@@ -298,6 +298,8 @@ packer.startup(function(use)
 
   --- MY ---
   --- Dash integration
+  -- use({ "ibhagwan/fzf-lua" })
+  -- use({ "camspiers/snap" })
   use({
     "mrjones2014/dash.nvim",
     run = "make install",
