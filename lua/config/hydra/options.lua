@@ -29,6 +29,17 @@ Hydra({
   body = "<leader>mo",
   heads = {
     {
+      "b",
+      function()
+        if vim.o.bg == "light" then
+          vim.o.bg = "dark"
+        else
+          vim.o.bg = "light"
+        end
+      end,
+      { desc = "backgroud" },
+    },
+    {
       "n",
       function()
         if vim.o.number == true then
