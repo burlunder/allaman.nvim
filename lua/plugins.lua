@@ -217,7 +217,6 @@ packer.startup(function(use)
     end,
   })
 
-
   use({ "edluffy/specs.nvim", config = get_config("specs") })
 
   use({ "mfussenegger/nvim-ts-hint-textobject" })
@@ -306,6 +305,13 @@ packer.startup(function(use)
     run = "make install",
   })
   use({ "glench/vim-jinja2-syntax" })
+  use({
+    "hermitmaster/nvim-kitty-navigator",
+    run = "cp kitty/* ~/.config/kitty/",
+    config = function()
+      require("nvim-kitty-navigator").setup({})
+    end,
+  })
 end)
 
 -- TODO: ????
