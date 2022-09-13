@@ -52,6 +52,7 @@ packer.startup(function(use)
   use({ "nvim-telescope/telescope-file-browser.nvim" })
   use({ "nvim-telescope/telescope-packer.nvim" })
   use({ "nvim-telescope/telescope-ui-select.nvim" })
+  use({ "ptethng/telescope-makefile" })
 
   use({
     "nvim-neo-tree/neo-tree.nvim",
@@ -169,7 +170,6 @@ packer.startup(function(use)
 
   use({
     "akinsho/nvim-toggleterm.lua",
-    keys = { "<C-n>" },
     config = get_config("toggleterm"),
   })
 
@@ -196,6 +196,8 @@ packer.startup(function(use)
     use({ "catppuccin/nvim", as = "catppuccin", config = get_config("catppuccin") })
   elseif settings.theme == "solarized" then
     use({ "ishan9299/nvim-solarized-lua", as = "solarized", config = get_config("solarized") })
+  elseif settings.theme == "tundra" then
+    use({ "sam4llis/nvim-tundra", config = get_config("tundra") })
   else
     use({ "catppuccin/nvim", as = "catppuccin", config = get_config("catppuccin") })
   end
@@ -285,6 +287,20 @@ packer.startup(function(use)
     end,
   })
 
+  use({
+    "max397574/colortils.nvim",
+    cmd = "Colortils",
+    config = function()
+      require("colortils").setup()
+    end,
+  })
+
+  use({
+    "aarondiel/spread.nvim",
+    after = "nvim-treesitter",
+    config = get_config("spread"),
+  })
+
   -- NOTE: use https://github.com/Akianonymus/nvim-colorizer.lua ?
   -- NOTE: use https://github.com/NvChad/nvim-colorizer.lua ?
   use({
@@ -314,7 +330,15 @@ packer.startup(function(use)
   })
 end)
 
--- TODO: ????
--- use {"lukas-reineke/headlines.nvim", config = get_config("headlines")}
--- https://github.com/glepnir/lspsaga.nvim
--- use 'glepnir/lspsaga.nvim'
+-- TODO:
+-- use({
+--   "someone-stole-my-name/yaml-companion.nvim",
+--   requires = {
+--     { "neovim/nvim-lspconfig" },
+--     { "nvim-lua/plenary.nvim" },
+--     { "nvim-telescope/telescope.nvim" },
+--   },
+--   config = function()
+--     require("telescope").load_extension("yaml_schema")
+--   end,
+-- })

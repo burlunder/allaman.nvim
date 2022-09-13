@@ -92,10 +92,6 @@ wk.register({
 -- Register all leader based mappings
 wk.register({
   ["<Tab>"] = { "<cmd>e#<cr>", "Prev buffer" },
-  ["<leader>"] = {
-    name = "Leader",
-    a = { "<cmd>lua print('fasfAS')<cr>", "test" },
-  },
   b = {
     name = "Buffers",
     b = {
@@ -110,7 +106,7 @@ wk.register({
   },
   f = {
     name = "Files",
-    b = { "<cmd>Telescope file_browser<cr>", "File browser" },
+    b = { "<cmd>Telescope file_browser grouped=true<cr>", "File browser" },
     f = { "<cmd>Telescope find_files<cr>", "Find File" },
     p = { "<cmd>Neotree reveal toggle<cr>", "Toggle Filetree" },
     r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
