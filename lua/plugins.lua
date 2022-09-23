@@ -84,6 +84,8 @@ packer.startup(function(use)
 
   use("RRethy/nvim-treesitter-endwise")
 
+  use({ "David-Kunz/markid" })
+
   use({
     "hrsh7th/nvim-cmp",
     requires = {
@@ -192,7 +194,7 @@ packer.startup(function(use)
 
   if settings.theme == "nightfox" then
     use({ "EdenEast/nightfox.nvim", config = get_config("nightfox") })
-  elseif settings.theme == "catppuccino" then
+  elseif settings.theme == "catppuccin" then
     use({ "catppuccin/nvim", as = "catppuccin", config = get_config("catppuccin") })
   elseif settings.theme == "solarized" then
     use({ "ishan9299/nvim-solarized-lua", as = "solarized", config = get_config("solarized") })
@@ -234,7 +236,9 @@ packer.startup(function(use)
   use({
     "j-hui/fidget.nvim",
     config = function()
-      require("fidget").setup({})
+      require("fidget").setup({ window = {
+        blend = 0,
+      } })
     end,
   })
 
@@ -258,6 +262,7 @@ packer.startup(function(use)
   use({
     "anuvyklack/hydra.nvim",
     requires = "anuvyklack/keymap-layer.nvim", -- needed only for pink hydras
+    commit = "ea91aa820a6cecc57bde764bb23612fff26a15de",
     config = get_config("hydra"),
   })
 
@@ -312,22 +317,16 @@ packer.startup(function(use)
     disable = settings.disable_colorizer,
   })
 
-  --- MY ---
-  --- Dash integration
-  -- use({ "ibhagwan/fzf-lua" })
-  -- use({ "camspiers/snap" })
   use({
-    "mrjones2014/dash.nvim",
-    run = "make install",
+    "anuvyklack/windows.nvim",
+    requires = {
+      "anuvyklack/middleclass",
+      "anuvyklack/animation.nvim",
+    },
+    config = get_config("windows"),
   })
-  use({ "glench/vim-jinja2-syntax" })
-  use({
-    "hermitmaster/nvim-kitty-navigator",
-    run = "cp kitty/* ~/.config/kitty/",
-    config = function()
-      require("nvim-kitty-navigator").setup({})
-    end,
-  })
+
+  use({ "axieax/urlview.nvim", config = get_config("urlview") })
 end)
 
 -- TODO:
