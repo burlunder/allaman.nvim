@@ -326,24 +326,33 @@ packer.startup(function(use)
 
   use({ "axieax/urlview.nvim", config = get_config("urlview") })
 
- --- MY ---
- --- Dash integration
- -- use({ "ibhagwan/fzf-lua" })
- -- use({ "camspiers/snap" })
- use({
-   "mrjones2014/dash.nvim",
-   run = "make install",
- })
-
- use({ "glench/vim-jinja2-syntax" })
-
- use({
-   "hermitmaster/nvim-kitty-navigator",
-   run = "cp kitty/* ~/.config/kitty/",
-   config = function()
-     require("nvim-kitty-navigator").setup({})
-   end,
-   })
+  --- MY ---
+  --- Dash integration
+  -- use({ "ibhagwan/fzf-lua" })
+  -- use({ "camspiers/snap" })
+  use({
+    "mrjones2014/dash.nvim",
+    run = "make install",
+  })
+  use({ "glench/vim-jinja2-syntax" })
+  use({
+    "hermitmaster/nvim-kitty-navigator",
+    run = "cp kitty/* ~/.config/kitty/",
+    config = function()
+      require("nvim-kitty-navigator").setup({})
+    end,
+  })
+  use({
+    "jghauser/kitty-runner.nvim",
+    config = function()
+      require("kitty-runner").setup()
+    end,
+  })
+  use({
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
+  })
+  --- MY ---
 end)
 
 -- TODO:
