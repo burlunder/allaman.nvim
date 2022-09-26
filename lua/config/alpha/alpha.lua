@@ -150,7 +150,7 @@ local buttons = {
   type = "group",
   val = {
     { type = "text", val = "Quick links", opts = { hl = "SpecialComment", position = "center" } },
-    dashboard.button("f", "  Find File", ":Telescope find_files <CR>"),
+    dashboard.button("f", "  Find File", ":" .. require("functions").telescope_find_files() .. "<CR>"),
     dashboard.button("b", "  File Browser", ":Telescope file_browser grouped=true <CR>"),
     dashboard.button("t", "  Find Text", ":Telescope live_grep <CR>"),
     dashboard.button("p", "  Search Projects", ":Telescope projects<CR>"),
@@ -168,7 +168,8 @@ local buttons = {
 local header = {
   type = "text",
   -- From https://gist.github.com/sRavioli/d6fb0a813b6affc171976b7dd09764d3
-  val = require("config.alpha-headers")["random"],
+  val = require("config.alpha.headers")["random"],
+  -- val = require("config.alpha-headers").banners.sharp,
   opts = {
     position = "center",
     hl = "AlphaHeader",
@@ -189,6 +190,11 @@ end
 
 if settings.disable_dashboard_header == true then
   layout[0] = nil
+end
+
+if settings.disable_dashboard_quick_links == true then
+  layout[3] = nil
+  layout[4] = nil
 end
 
 local opts = {
