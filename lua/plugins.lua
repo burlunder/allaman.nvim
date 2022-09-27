@@ -348,10 +348,6 @@ packer.startup(function(use)
       require("kitty-runner").setup()
     end,
   })
-  use({
-    "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
-  })
   --- MY ---
 end)
 
