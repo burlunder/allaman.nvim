@@ -326,6 +326,18 @@ packer.startup(function(use)
 
   use({ "axieax/urlview.nvim", config = get_config("urlview") })
 
+  use({
+    "folke/noice.nvim",
+    event = "VimEnter",
+    config = get_config("noice"),
+    requires = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+      "hrsh7th/nvim-cmp",
+    },
+  })
+
   --- MY ---
   --- Dash integration
   -- use({ "ibhagwan/fzf-lua" })
