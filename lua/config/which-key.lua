@@ -116,11 +116,8 @@ wk.register({
   g = { "Git" },
   m = {
     name = "Misc",
-    a = {
-      "<cmd>lua require'telegraph'.telegraph({cmd='gitui', how='tmux_popup'})<cr>",
-      "Test Telegraph",
-    },
     c = { "<cmd>lua require('functions').toggle_colorcolumn()<cr>", "Toggle Colorcolumn" },
+    C = { "<cmd>:CBcatalog<cr>", "Commentbox Catalog" },
     d = { "<cmd>lua require('functions').toggle_diagnostics()<cr>", "Toggle Diagnostics" },
     i = { "<cmd>IlluminateToggle<cr>", "Toggle Illuminate" },
     l = { "<cmd>source ~/.config/nvim/snippets/*<cr>", "Reload snippets" },
