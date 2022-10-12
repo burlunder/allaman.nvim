@@ -357,6 +357,10 @@ packer.startup(function(use)
       require("kitty-runner").setup()
     end,
   })
+  use({
+    "hkupty/iron.nvim",
+    config = get_config("iron-nvim"),
+  })
   --- MY ---
 end)
 
