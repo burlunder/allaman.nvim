@@ -200,70 +200,6 @@ packer.startup(function(use)
     config = get_config("lsp.null-ls"),
   })
 
-<<<<<<< HEAD
-  use({
-    "simrat39/symbols-outline.nvim",
-    cmd = { "SymbolsOutline" },
-    config = get_config("symbols"),
-  })
-
-  use({
-    "lukas-reineke/indent-blankline.nvim",
-    event = "BufReadPre",
-    config = get_config("indent-blankline"),
-  })
-
-  use({
-    "akinsho/nvim-toggleterm.lua",
-    config = get_config("toggleterm"),
-  })
-
-  -- TODO: switch to https://github.com/B4mbus/todo-comments.nvim ?
-  use({
-    "folke/todo-comments.nvim",
-    cmd = "TodoQuickFix",
-    requires = "nvim-lua/plenary.nvim",
-    config = get_config("todo"),
-  })
-
-  use({ "ahmedkhalf/project.nvim", config = get_config("project") })
-
-  use({ "folke/which-key.nvim", config = get_config("which-key") })
-
-  use({ "rhysd/vim-grammarous", cmd = "GrammarousCheck" })
-
-  if settings.theme == "nightfox" then
-    use({ "EdenEast/nightfox.nvim", config = get_config("themes.nightfox") })
-  elseif settings.theme == "solarized" then
-    use({ "ishan9299/nvim-solarized-lua", as = "solarized", config = get_config("solarized") })
-  elseif settings.theme == "tundra" then
-    use({ "sam4llis/nvim-tundra", config = get_config("themes.tundra") })
-  elseif settings.theme == "tokyonight" then
-    use({ "folke/tokyonight.nvim", branch = "main", config = get_config("themes.tokyonight") })
-  else
-    use({ "catppuccin/nvim", as = "catppuccin", config = get_config("themes.catppuccin") })
-  end
-
-  use({ "tweekmonster/startuptime.vim" })
-
-  use({ "ray-x/go.nvim", requires = "ray-x/guihua.lua", config = get_config("go"), ft = { "go" } })
-
-  use({ "LudoPinelli/comment-box.nvim", cmd = "CB*", config = get_config("comment-box") })
-
-  use({ "rcarriga/nvim-notify", config = get_config("notify") })
-
-  use({ "echasnovski/mini.nvim", branch = "main", config = get_config("mini") })
-
-  use({ "mfussenegger/nvim-ts-hint-textobject" })
-
-  use({
-    "goolord/alpha-nvim",
-    requires = { "kyazdani42/nvim-web-devicons" },
-    config = get_config("alpha.alpha"),
-  })
-
-=======
->>>>>>> main
   use({ "SmiteshP/nvim-navic" })
 
   use({
@@ -386,35 +322,6 @@ packer.startup(function(use)
       require("colorizer").setup()
     end,
     disable = settings.disable_colorizer,
-  })
-
-  use({
-    "anuvyklack/windows.nvim",
-    event = "VimEnter",
-    requires = {
-      "anuvyklack/middleclass",
-      "anuvyklack/animation.nvim",
-    },
-    config = get_config("windows"),
-  })
-
-  use({ "axieax/urlview.nvim", cmd = "Urlview", config = get_config("urlview") })
-
-  -- use({
-  --   "folke/noice.nvim",
-  --   event = "VimEnter",
-  --   config = get_config("noice"),
-  --   requires = {
-  --     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-  --     "MunifTanjim/nui.nvim",
-  --     "rcarriga/nvim-notify",
-  --     "hrsh7th/nvim-cmp",
-  --   },
-  -- })
-
-  use({
-    "ironhouzi/starlite-nvim",
-    config = get_config("starlite-nvim"),
   })
 
   use({ "tweekmonster/startuptime.vim" })
