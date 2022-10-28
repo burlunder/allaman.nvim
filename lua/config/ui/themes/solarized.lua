@@ -1,7 +1,11 @@
-local g = vim.g
-g.solarized_visibility = "normal"
-g.solarized_italics = 1
-g.solarized_diffmode = "low"
-g.solarized_statusline = "normal"
+require("solarized").setup({
+  options = {
+    solarized_visibility = "normal",
+    solarized_italics = 1,
+    solarized_diffmode = "low",
+    solarized_statusline = "normal",
+  },
+})
 
-vim.cmd([[colorscheme solarized-flat]])
+-- setup must be called before loading
+vim.cmd("colorscheme solarized-flat")

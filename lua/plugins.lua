@@ -263,8 +263,10 @@ packer.startup(function(use)
     use({ "sam4llis/nvim-tundra", config = get_config("ui.themes.tundra") })
   elseif settings.theme == "tokyonight" then
     use({ "folke/tokyonight.nvim", branch = "main", config = get_config("ui.themes.tokyonight") })
-  else
+  elseif settings.theme == "catppuccin" then
     use({ "catppuccin/nvim", as = "catppuccin", config = get_config("ui.themes.catppuccin") })
+  elseif settings.theme == "solarized" then
+    use({ "ishan9299/nvim-solarized-lua", as = "solarized", config = get_config("ui.themes.solarized") })
   end
 
   use({
@@ -354,5 +356,4 @@ packer.startup(function(use)
     config = get_config("iron-nvim"),
   })
   -- }}} MY
-
 end)
