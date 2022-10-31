@@ -31,13 +31,13 @@ Hydra({
     {
       "b",
       function()
-        if vim.o.bg == "light" then
-          vim.o.bg = "dark"
+        if vim.o.background == "light" then
+          vim.o.background = "dark"
         else
-          vim.o.bg = "light"
+          vim.o.background = "light"
         end
       end,
-      { desc = "backgroud" },
+      { desc = "background" },
     },
     {
       "n",

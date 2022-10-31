@@ -257,18 +257,6 @@ packer.startup(function(use)
 
   use({ "folke/which-key.nvim", config = get_config("ui.which-key") })
 
-  if settings.theme == "nightfox" then
-    use({ "EdenEast/nightfox.nvim", config = get_config("ui.themes.nightfox") })
-  elseif settings.theme == "tundra" then
-    use({ "sam4llis/nvim-tundra", config = get_config("ui.themes.tundra") })
-  elseif settings.theme == "tokyonight" then
-    use({ "folke/tokyonight.nvim", branch = "main", config = get_config("ui.themes.tokyonight") })
-  elseif settings.theme == "catppuccin" then
-    use({ "catppuccin/nvim", as = "catppuccin", config = get_config("ui.themes.catppuccin") })
-  elseif settings.theme == "solarized" then
-    use({ "ishan9299/nvim-solarized-lua", as = "solarized", config = get_config("ui.themes.solarized") })
-  end
-
   use({
     "goolord/alpha-nvim",
     requires = { "kyazdani42/nvim-web-devicons" },
@@ -355,5 +343,17 @@ packer.startup(function(use)
     "hkupty/iron.nvim",
     config = get_config("iron-nvim"),
   })
+  use({
+    "ishan9299/nvim-solarized-lua",
+    config = get_config("ui.themes.solarized"),
+  })
+  -- use({
+  --   "shaunsingh/solarized.nvim",
+  --   config = get_config("ui.themes.solarized"),
+  -- })
+  -- use({
+  --   "Tsuzat/NeoSolarized.nvim",
+  --   config = get_config("ui.themes.solarized"),
+  -- })
   -- }}} MY
 end)

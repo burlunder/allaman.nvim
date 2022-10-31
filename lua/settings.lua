@@ -2,8 +2,7 @@ local M = {}
 
 -- theme: nightfox, tokyonight, tundra; default is catppuccin
 -- refer to the themes settings file for different styles
-M.theme = "tundra"
--- M.theme = "solarized"
+M.theme = "solarized"
 -- Toggle global status line
 M.global_statusline = true
 -- use rg instead of grep
