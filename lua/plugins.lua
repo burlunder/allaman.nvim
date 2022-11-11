@@ -348,6 +348,10 @@ packer.startup(function(use)
     "ishan9299/nvim-solarized-lua",
     config = get_config("ui.themes.solarized"),
   })
+  -- https://github.com/wsdjeg/vim-fetch.git
+  use({
+    "wsdjeg/vim-fetch",
+  })
   -- use({
   --   "shaunsingh/solarized.nvim",
   --   config = get_config("ui.themes.solarized"),
