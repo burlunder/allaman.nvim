@@ -328,19 +328,12 @@ packer.startup(function(use)
   -- }}} Other
 
   -- {{{ MY
-  --- Dash integration
-  -- use({ "ibhagwan/fzf-lua" })
-  -- use({ "camspiers/snap" })
-  -- use({
-  --   "mrjones2014/dash.nvim",
-  --   run = "make install",
-  -- })
   use({ "glench/vim-jinja2-syntax" })
   use({
     "hermitmaster/nvim-kitty-navigator",
     run = "cp kitty/* ~/.config/kitty/",
     config = function()
-      require("nvim-kitty-navigator").setup({})
+      require("nvim-kitty-navigator").setup()
     end,
   })
   use({
@@ -361,6 +354,7 @@ packer.startup(function(use)
   use({
     "wsdjeg/vim-fetch",
   })
+  use({ "rodjek/vim-puppet" })
   -- use({
   --   "shaunsingh/solarized.nvim",
   --   config = get_config("ui.themes.solarized"),
