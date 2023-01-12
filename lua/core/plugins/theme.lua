@@ -25,7 +25,9 @@ elseif settings.theme == "tokyonight" then
 elseif settings.theme == "solarized" then
   return {
     "ishan9299/nvim-solarized-lua",
-    config = get_config("ui.themes.solarized"),
+    config = function()
+      require("core.plugins.themes.solarized")
+    end,
   }
 else
   return {
