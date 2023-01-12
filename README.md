@@ -37,7 +37,7 @@ _Font_: Jetbrains Mono
 
 ![](./docs/which-key.png)
 
-See `./lua/config/which.lua` for details.
+See `./lua/core/config/ui/which-key.lua` for details.
 
 </details>
 
@@ -81,7 +81,7 @@ I decided to move to my own fresh Lua based Neovim from my good old vimrc trying
 
 ### General ⚙️
 
-- Package management and plugin configuration via [Packer](https://github.com/wbthomason/packer.nvim)
+- Package management and plugin configuration via [lazy.nvim](https://github.com/folke/lazy.nvim)
 - Mnemonic keyboard mappings inspired by [Spacemacs](https://www.spacemacs.org/) via [which-key.nvim](https://github.com/folke/which-key.nvim); no more than three keystrokes for each keybinding
 - Submodes powered by [Hydra.nvim](https://github.com/anuvyklack/hydra.nvim)
 - Complete transformation via [noice.nvim](https://github.com/folke/noice.nvim)
@@ -119,7 +119,7 @@ I decided to move to my own fresh Lua based Neovim from my good old vimrc trying
 
 If you have [Docker](https://www.docker.com/) on your system you can try out this config via the provided `Dockerfile`
 
-💡 All dependencies of my config are installed except texlab, tectonic, and vim-grammarous which makes it at **1.9GB** a rather large image
+💡 All dependencies of my config are installed except texlab, tectonic, which makes it at **1.9GB** a rather large image
 
 ### Build the image
 
@@ -153,7 +153,7 @@ I created an installation [script](install.sh) that sets up all required tools o
 
 For now, it works on Debian/Ubuntu and Arch. MacOS will be added soon.
 
-💡If you are a Tmux user have a look at vim-tpipelins's [requirements](https://github.com/vimpostor/vim-tpipeline#installation) for your tmux.conf and enable it in `./lua/settings.lua`.
+💡If you are a Tmux user have a look at vim-tpipelins's [requirements](https://github.com/vimpostor/vim-tpipeline#installation) for your tmux.conf and enable it in `./lua/core/settings.lua`.
 
 USE AT YOUR OWN RISK!!
 
@@ -166,7 +166,15 @@ There are some tools that are required in order to use some features/plugins:
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [fd](https://github.com/sharkdp/fd)
 - [fzf](https://github.com/junegunn/fzf)
+
+For neo-tree delete functionality:
+
 - [trash-cli](https://github.com/andreafrancia/trash-cli)
+
+For Latex functionality:
+
+- [Tectonic](https://tectonic-typesetting.github.io/en-US/)
+- [Skim](https://skim-app.sourceforge.io/)
 
 ### LSPs, Formatting, Linters, DAP
 
@@ -184,8 +192,6 @@ Go related dependencies are managed by `go.nvim` and are installed by running `:
 #### All other
 
 All other dependencies are managed by [Mason](https://github.com/williamboman/mason.nvim) and [Mason tool installer](https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim). Tools are installed by running `:MasonToolsInstall` (in `vim.fn.stdpath("data") .. "mason"`). [Mason requirements](https://github.com/williamboman/mason.nvim#requirements) must be available on your system.
-
-For advanced spell checks via [vim-grammarous](https://github.com/rhysd/vim-grammarous) Java 8+ is required
 
 ## Bindings
 
@@ -209,58 +215,62 @@ For advanced spell checks via [vim-grammarous](https://github.com/rhysd/vim-gram
 | i/s  | \<c-k\>                | Luasnip backward                                       |
 | i    | \<c-h\>                | Luasnip select choice                                  |
 | n    | \<c-n\>                | Toggleterm (opens/hides a full terminal in Neovim)     |
-| i    | \<c-l\>                | Move out of closing bracket                            |
+| i    | \<c-l\>                | Move out of closing brackets                           |
 | n    | \<CR\>                 | Start incremental selection                            |
 | v    | \<Tab\>                | Increment selection                                    |
 | v    | \<S-Tab\>              | Decrement selection                                    |
+| v    | \<S-j\>                | Move selected lines down                               |
+| v    | \<S-k\>                | Move selected lines up                                 |
 
 ## Structure
 
-Each plugin to be installed is defined in `plugins.lua` and each plugin has its own configuration file (if necessary) in `lua/config/` which is loaded by packer.
+`tree1 .`
 
 ```sh
 .
 ├── after            # file specific settings
 ├── init.lua         # main entry point
-├── lua
-│   ├── autocmd.lua  # autocommands
-│   ├── config/      # plugin configurations
-│   ├── mappings.lua # Keymappings not in plugin configuration
-│   ├── options.lua  # non plugin related (vim) options
-│   ├── plugins.lua  # define plugins to be managed via Packer
-│   ├── settings.lua # parameters to configure some settings
-│   ├── winbar.lua   # winbar configuration
-│   └── utils.lua    # lua code to extend functionality
-├── plugin           # packer_compiled
+├── lazy-lock.json   # Lockfile for Lazy.nvim
+├── lua/core         # lua configuration
 ├── snippets         # snippets directory (luasnip style)
 └── spell            # my spell files linked from another repo
 ```
 
+`tree1 lua/core`
+
+```sh
+lua/core
+├── autocmd.lua      # autocmds for various things
+├── config           # configuration folder for plugins
+├── globals.lua      # global functions
+├── lazy.lua         # Lazy configuration
+├── mappings.lua     # key bindings
+├── options.lua      # vim options
+├── plugins          # plugins and their configuration
+├── settings.lua     # user settings to configure
+```
+
+Each plugin to be installed is defined in `./lua/core/plugins/` in a separate file.
+
 ## User configuration
 
-The intention of my Neovim configuration was never to be a fully customizable "distribution" like LunarVim, SpaceVim, etc but from time to time I like to change my color scheme and the idea of making this configurable came to my mind. Based upon this idea I implemented some further lightweight configuration options that might be useful.
+The intention of my Neovim configuration was never to be a fully customizable "distribution" like LunarVim, SpaceVim, etc. but from time to time I like to change my color scheme and the idea of making this configurable came to my mind. Based upon this idea I implemented some further lightweight configuration options that might be useful.
 
-All options can be found in `./lua/settings.lua`.
+All options can be found in `./lua/core/settings.lua`.
 
 ## Remove plugins
 
-Basically, you can remove unwanted plugins by just removing the appropriate line in `./lua/plugins.lua` and, if applicable, delete its configuration file in `./lua/config/`.
+You can remove unwanted plugins by just removing the appropriate file in `./lua/core/plugins/`. Lazy will take care of removing the plugin.
 
-ℹ️ Keep in mind that some plugins are configured to work in conjunction with other plugins. For instance, autopairs is configured in `./lua/config/treesitter.lua`. For now there is no logic implemented that cross-checks such dependencies.
+**Keep in mind that some plugins are configured to work in conjunction with other plugins. For instance, autopairs is configured in `./lua/vim/config/treesitter.lua`. For now there is no logic implemented that cross-checks such dependencies.**
 
 ## Add plugins
 
 If you want to follow my method adding a plugin is straight forward:
 
-In `lua/plugins.lua` add the plugin to Packer. You are free to use a name for the configuration file (should be a valid filename).
+Create a file in `./lua/core/plugins/` following the expected format of Lazy.
 
-```lua
-use {"<Address-of-the-plugin>", config = get_config("<name-of-the-plugin>")}
-```
-
-Create `lua/config/<name-of-the-plugin>.lua` where you put the plugins settings. If your plugin does not require additional configuration or loading you can omit the config part.
-
-Open another instance of Neovim (I always try to keep one running instance of Neovim open in case I messed up my config) and run `PackerSync`.
+Open another instance of Neovim (I always try to keep one running instance of Neovim open in case I messed up my config) and run `Lazy sync`.
 
 ## Inspiration
 
