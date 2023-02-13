@@ -29,6 +29,13 @@ elseif settings.theme == "solarized" then
       require("core.plugins.themes.solarized")
     end,
   }
+elseif settings.theme == "kanagawa" then
+  return {
+    "rebelot/kanagawa.nvim",
+    config = function()
+      require("lua.core.plugins.themes.kanagawa")
+    end,
+  }
 else
   return {
     "catppuccin/nvim",
