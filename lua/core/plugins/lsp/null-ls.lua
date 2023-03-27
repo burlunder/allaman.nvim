@@ -21,6 +21,7 @@ nls.setup({
     nls.builtins.code_actions.shellcheck,
     nls.builtins.code_actions.gitsigns,
     nls.builtins.formatting.shfmt,
+    nls.builtins.diagnostics.ruff,
   },
   on_attach = function(client, bufnr)
     vim.keymap.set(
