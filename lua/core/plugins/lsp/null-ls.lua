@@ -12,6 +12,9 @@ nls.setup({
       extra_args = { "--single-quote", "false" },
     }),
     nls.builtins.formatting.terraform_fmt,
+    nls.builtins.diagnostics.terraform_validate,
+    nls.builtins.diagnostics.tfsec,
+    nls.builtins.formatting.packer,
     nls.builtins.formatting.black,
     nls.builtins.formatting.goimports,
     nls.builtins.formatting.gofumpt,
@@ -22,8 +25,18 @@ nls.setup({
     nls.builtins.code_actions.gitsigns,
     nls.builtins.formatting.shfmt,
     nls.builtins.diagnostics.ruff,
-    nls.builtins.diagnostics.puppet_lint,
+    -- puppet
     nls.builtins.formatting.puppet_lint,
+    nls.builtins.diagnostics.puppet_lint,
+    -- ruby
+    nls.builtins.diagnostics.reek,
+    nls.builtins.diagnostics.rubocop,
+    -- json/yaml
+    nls.builtins.diagnostics.spectral,
+    -- nls.builtins.diagnostics.vacuum,
+    nls.builtins.diagnostics.yamllint,
+    -- python
+    nls.builtins.diagnostics.vulture,
   },
   on_attach = function(client, bufnr)
     vim.keymap.set(
