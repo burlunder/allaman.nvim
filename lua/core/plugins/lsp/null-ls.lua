@@ -37,6 +37,7 @@ nls.setup({
     nls.builtins.diagnostics.yamllint,
     -- python
     nls.builtins.diagnostics.vulture,
+    nls.builtins.formatting.rustfmt,
   },
   on_attach = function(client, bufnr)
     vim.keymap.set(
