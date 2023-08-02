@@ -8,7 +8,6 @@ local M = {
     "nvim-telescope/telescope-file-browser.nvim",
     "nvim-telescope/telescope-ui-select.nvim",
     "ptethng/telescope-makefile",
-    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
   },
   keys = {
     -- Search stuff
@@ -47,7 +46,7 @@ local M = {
     { "<C-f>", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Search in buffer" },
   },
   config = function()
-    local settings = require("core.settings")
+    local conf = vim.g.config
     local telescope = require("telescope")
     local telescopeConfig = require("telescope.config")
     local actions = require("telescope.actions")
@@ -56,22 +55,14 @@ local M = {
     local icons = require("core.utils.icons")
 
     local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
-    if settings.telescope_grep_hidden then
+    if conf.telescope_grep_hidden then
       table.insert(vimgrep_arguments, "--hidden")
     end
     -- trim the indentation at the beginning of presented line
     table.insert(vimgrep_arguments, "--trim")
 
-    local fzf_opts = {
-      fuzzy = true,
-      override_generic_sorter = true,
-      override_file_sorter = true,
-      case_mode = "smart_case",
-    }
-
     telescope.setup({
       extensions = {
-        fzf = fzf_opts,
         ["ui-select"] = {
           require("telescope.themes").get_dropdown({}),
         },
@@ -105,7 +96,6 @@ local M = {
           sort_lastused = true,
         },
         live_grep = {
-          sorter = telescope.extensions.fzf.native_fzf_sorter(fzf_opts),
           only_sort_text = true, -- grep for content and not file name/path
           mappings = {
             i = { ["<c-f>"] = require("telescope.actions").to_fuzzy_refine },
@@ -113,7 +103,7 @@ local M = {
         },
       },
       defaults = {
-        file_ignore_patterns = settings.telescope_file_ignore_patterns,
+        file_ignore_patterns = conf.telescope_file_ignore_patterns,
         vimgrep_arguments = vimgrep_arguments,
         mappings = {
           i = {
@@ -180,10 +170,9 @@ local M = {
     telescope.load_extension("heading")
     telescope.load_extension("ui-select")
     telescope.load_extension("make")
-    if settings.enable_noice then
+    if conf.plugins.noice.enable then
       telescope.load_extension("noice")
     end
-    telescope.load_extension("fzf")
   end,
 }
 

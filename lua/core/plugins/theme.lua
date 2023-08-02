@@ -1,55 +1,51 @@
-local settings = require("core.settings")
-
-if settings.theme == "nightfox" then
-  return {
+local themes = {
+  nightfox = {
     "EdenEast/nightfox.nvim",
     config = function()
       require("core.plugins.themes.nightfox")
     end,
-  }
-elseif settings.theme == "tundra" then
-  return {
+  },
+  tundra = {
     "sam4llis/nvim-tundra",
     config = function()
       require("core.plugins.themes.tundra")
     end,
-  }
-elseif settings.theme == "tokyonight" then
-  return {
+  },
+  tokyonight = {
     "folke/tokyonight.nvim",
     branch = "main",
     config = function()
       require("core.plugins.themes.tokyonight")
     end,
-  }
-elseif settings.theme == "solarized" then
-  return {
+  },
+  solarized = {
     "ishan9299/nvim-solarized-lua",
     config = function()
       require("core.plugins.themes.solarized")
     end,
-  }
-elseif settings.theme == "kanagawa" then
-  return {
+  },
+  kanagawa = {
     "rebelot/kanagawa.nvim",
     config = function()
       require("lua.core.plugins.themes.kanagawa")
     end,
-  }
-elseif settings.theme == "oxocarbon" then
-  return {
+  },
+  oxocarbon = {
     "nyoom-engineering/oxocarbon.nvim",
     config = function()
       vim.opt.background = "dark" -- set this to dark or light
       vim.cmd("colorscheme oxocarbon")
     end,
-  }
-else
-  return {
+  },
+  catppuccin = {
     "catppuccin/nvim",
     name = "catppuccin",
     config = function()
       require("core.plugins.themes.catppuccin")
     end,
-  }
-end
+  },
+}
+
+local selectedTheme = themes[vim.g.config.theme.name]
+
+return selectedTheme

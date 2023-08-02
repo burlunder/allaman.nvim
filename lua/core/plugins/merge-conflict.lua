@@ -1,12 +1,13 @@
-local settings = require("core.settings")
+local conf = vim.g.config.plugins.git
 
 return {
 
   {
     "akinsho/git-conflict.nvim",
+    version = "*",
     config = true,
     enabled = function()
-      if settings.merge_conflict_tool == "git-conflict" then
+      if conf.merge_conflict_tool == "git-conflict" or conf.merge_conflict_tool == "both" then
         return true
       end
       return false
@@ -22,7 +23,7 @@ return {
       "DiffviewFocusFiles",
     },
     enabled = function()
-      if settings.merge_conflict_tool == "diffview" then
+      if conf.merge_conflict_tool == "diffview" or conf.merge_conflict_tool == "both" then
         return true
       end
       return false
